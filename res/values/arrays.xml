@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="syncFrequency">
+        <item name="0">A</item>
+        <item name="1">A#</item>
+        <item name="2">B</item>
+        <item name="3">C</item>
+        <item name="4">C#</item>
+        <item name="5">D</item>
+        <item name="6">D#</item>
+        <item name="7">E</item>
+        <item name="8">F</item>
+        <item name="9">F#</item>
+        <item name="10">G</item>
+        <item name="11">G#</item>
+    	</string-array>
+    <string-array name="syncFrequencyValues">
+        <item name="0">0</item>
+       	<item name="1">1</item>
+       	<item name="2">2</item>
+      	<item name="3">3</item>
+      	<item name="4">4</item>
+      	<item name="5">5</item>
+      	<item name="6">6</item>
+      	<item name="7">7</item>
+      	<item name="8">8</item>
+      	<item name="9">9</item>
+      	<item name="10">10</item>
+      	<item name="11">11</item>
+    </string-array>
+</resources>

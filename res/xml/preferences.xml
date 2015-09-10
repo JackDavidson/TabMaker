@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+        <PreferenceCategory
+                android:title="Settings">
+            <PreferenceScreen
+                android:key="FirstPrefScreen"
+                android:title="General"
+                android:summary="Offer tutorial on startup, Disable big 'MOVE', Disable Help, Number of strings.">
+    			<CheckBoxPreference
+                	android:name="OfferTutorial"
+                	android:summary="Do you want to be offered a tutorial every time the app starts up?"
+                	android:defaultValue="True"
+                	android:title="Offer Tutorial on Startup"
+                	android:key="OfferTutorial"/>
+                <CheckBoxPreference
+                	android:name="DisableBigMove"
+                	android:summary="Check to disable the large 'MOVE' button. (Remember, pressing on the move button makes it disappear, too.)"
+                	android:defaultValue="True"
+                	android:title="Disable 'MOVE'"
+                	android:key="DisableBigMove"/>
+                <CheckBoxPreference
+                	android:name="NoHelp"
+                	android:summary="Disable all toasts (help messages) for a cleaner interface. Suggested only for experienced users."
+                	android:defaultValue="False"
+                	android:title="No Help"
+                	android:key="NoHelp"/>
+                <EditTextPreference
+                	android:name="DefaultNumStrings"
+                	android:summary="This is how many strings you want when you make a new tab. 4-10, and nothing else"
+                	android:defaultValue="6"
+                	android:title="Default Number of Strings"
+                	android:key="DefaultNumStr"
+    				android:numeric="integer"
+    				android:maxLength="2" />
+    		</PreferenceScreen>
+        
+        <PreferenceScreen
+                android:key="ThirdPrefScreen"
+                android:title="Play Back"
+                android:summary="This is a second PreferenceScreen for editing your play back settings">
+                <PreferenceCategory
+                	android:title="Primary">
+                <CheckBoxPreference
+                	android:name="LoopPlayBack"
+                	android:summary="When a selected portion of the tab is played, should it be looped until canceled? (donation version only)"
+                	android:defaultValue="False"
+                	android:title="Loop Play Back"
+                	android:key="LoopPlayBack"/>
+    			</PreferenceCategory>
+    			<EditTextPreference
+                	android:name="NPM"
+                	android:summary="This is closely related to BPM. This value should usually be set to or 2x or 3x your BPM. This number represents how quickly the playback moves through each '-' or note in your tab. default = 400"
+                	android:defaultValue="400"
+                	android:title="Notes Per Minute"
+                	android:key="NPM"
+    				android:numeric="integer"
+    				android:maxLength="3" />
+    			<CheckBoxPreference
+                	android:name="IgnoreDoubleDigitNotes"
+                	android:summary="When this is checked, tab maker will not look for double digit notes. Instead, notes placed side by side will be played individually."
+                	android:defaultValue="False"
+                	android:title="Ignore Double Digit Notes"
+                	android:key="IgnoreDoubleDigitNotes"/>
+        </PreferenceScreen>
+        
+        <PreferenceScreen
+                android:key="SecondPrefScreen"
+                android:title="Tuning"
+                android:summary="This is a third PreferenceScreen for editing your tuning">
+                <PreferenceCategory
+                	android:title="Primary">
+                <EditTextPreference
+                	android:name="PrimaryOctave"
+                	android:summary="This is the primary octave, meaning the octave on which all your tuning will start. default = 3"
+                	android:defaultValue="3"
+                	android:title="Primary Octave"
+                	android:key="PrimeOctave"
+    				android:numeric="integer"
+    				android:maxLength="1" />
+    			</PreferenceCategory>
+    			<PreferenceCategory
+                	android:title="Secondary">
+                <EditTextPreference
+                	android:name="FirstOctaveOffset"
+                	android:summary="This is a octave offset, meaning how many octaves above the primary octave this string should be. default = 0"
+                	android:defaultValue="0"
+                	android:title="1st (lowest) string octave Offset"
+                	android:key="FirstOctaveOffset"
+    				android:numeric="integer"
+    				android:maxLength="1" />
+    			<ListPreference
+            		android:key="FirstNoteOffset"
+            		android:entries="@array/syncFrequency"
+            		android:summary="This is a note offset, meaning how many notes above the first in the octave this string should be. (A=0,A#=1,B=2,C=3,C#=4,D=5,D#=6,E=7,F=8,F#=9,G=10,G#=11) default = 7(E)"
+            		android:defaultValue="7"
+            		android:entryValues="@array/syncFrequencyValues"
+            		android:title="1st (lowest) string note Offset" />
+    				
+    			<EditTextPreference
+                	android:name="SecondOctaveOffset"
+                	android:summary="This is a octave offset, meaning how many octaves above the primary octave this string should be. default = 1"
+                	android:defaultValue="1"
+                	android:title="2nd string octave Offset"
+                	android:key="SecondOctaveOffset"
+    				android:numeric="integer"
+    				android:maxLength="1" />
+    			<ListPreference
+            		android:key="SecondNoteOffset"
+            		android:entries="@array/syncFrequency"
+            		android:summary="This is a note offset, meaning how many notes above the first in the octave this string should be. default = 0(A)"
+            		android:defaultValue="0"
+            		android:entryValues="@array/syncFrequencyValues"
+            		android:title="2nd string note Offset" />
+    				
+    			<EditTextPreference
+                	android:name="ThirdOctaveOffset"
+                	android:summary="This is a octave offset, meaning how many octaves above the primary octave this string should be. default = 1"
+                	android:defaultValue="1"
+                	android:title="3rd string octave Offset"
+                	android:key="ThirdOctaveOffset"
+    				android:numeric="integer"
+    				android:maxLength="1" />
+    			<ListPreference
+            		android:key="ThirdNoteOffset"
+            		android:entries="@array/syncFrequency"
+            		android:summary="This is a note offset, meaning how many notes above the first in the octave this string should be. default = 5(D)"
+            		android:defaultValue="5"
+            		android:entryValues="@array/syncFrequencyValues"
+            		android:title="3rd string note Offset" />
+    				
+    			<EditTextPreference
+                	android:name="FourthOctaveOffset"
+                	android:summary="This is a octave offset, meaning how many octaves above the primary octave this string should be. default = 1"
+                	android:defaultValue="1"
+                	android:title="4th string octave Offset"
+                	android:key="FourthOctaveOffset"
+    				android:numeric="integer"
+    				android:maxLength="1" />
+    			<ListPreference
+            		android:key="FourthNoteOffset"
+            		android:entries="@array/syncFrequency"
+            		android:summary="This is a note offset, meaning how many notes above the first in the octave this string should be. default = 10(G)"
+            		android:defaultValue="10"
+            		android:entryValues="@array/syncFrequencyValues"
+            		android:title="4th string note Offset" />
+    				
+    			<EditTextPreference
+                	android:name="FifthOctaveOffset"
+                	android:summary="This is a octave offset, meaning how many octaves above the primary octave this string should be. default = 2"
+                	android:defaultValue="2"
+                	android:title="5th string octave Offset"
+                	android:key="FifthOctaveOffset"
+    				android:numeric="integer"
+    				android:maxLength="1" />
+    			<ListPreference
+            		android:key="FifthNoteOffset"
+            		android:entries="@array/syncFrequency"
+            		android:summary="This is a note offset, meaning how many notes above the first in the octave this string should be. default = 2(B)"
+            		android:defaultValue="2"
+            		android:entryValues="@array/syncFrequencyValues"
+            		android:title="5th string note Offset" />
+    				
+    			<EditTextPreference
+                	android:name="SixthOctaveOffset"
+                	android:summary="This is a octave offset, meaning how many octaves above the primary octave this string should be. default = 2"
+                	android:defaultValue="2"
+                	android:title="6th string octave Offset"
+                	android:key="SixthOctaveOffset"
+    				android:numeric="integer"
+    				android:maxLength="1" />
+    			<!--
+    			<EditTextPreference
+                	android:name="SixthNoteOffset"
+                	android:summary="This is a note offset, meaning how many notes above the first in the octave this string should be. default = 7(E)"
+                	android:defaultValue="7"
+                	android:title="6th string note Offset"
+                	android:key="SixthNoteOffset"
+    				android:numeric="integer"
+    				android:maxLength="2" />
+    			-->
+    			<ListPreference
+            		android:key="SixthNoteOffset"
+            		android:entries="@array/syncFrequency"
+            		android:summary="This is a note offset, meaning how many notes above the first in the octave this string should be. default = 7(E)"
+            		android:defaultValue="7"
+            		android:entryValues="@array/syncFrequencyValues"
+            		android:title="6th string note Offset" />
+    			</PreferenceCategory>
+        </PreferenceScreen>
+        </PreferenceCategory>
+        <PreferenceCategory
+                android:title="Thank You's and licenses">
+        
+        <PreferenceScreen
+                android:key="ThirdPrefScreen"
+                android:title="Thank You's and licenses"
+                android:summary="In here are thank you's and links to all the open source software used in the designing of this app.">
+                
+                <PreferenceCategory>
+                	android:title="Andengine">
+                	<Preference 
+                		android:title="Andengine, the open source android game engine" 
+                		android:summary="Andengine is an open source project released under the Apache License 2.0. Its the engine for most visuals for this entire app. Click here for a link to their homepage. Tab Maker would not exist without this! (below is the Apache license v2.0 for you to see)">
+    					<intent android:action="android.intent.action.VIEW"
+            			android:data="http://www.andengine.org/" />
+					</Preference>
+				</PreferenceCategory>
+                <PreferenceCategory
+                	android:title="music-synthesizer-for-android">
+                	<Preference 
+                		android:title="music-synthesizer-for-android" 
+                		android:summary="music-synthesizer-for-android is an open source project released under the Apache License 2.0. Its the synthesizer that runs the audio for this entire app. Click here for a link to the google code site. Thank you so much for this!">
+    					<intent android:action="android.intent.action.VIEW"
+            			android:data="https://code.google.com/p/music-synthesizer-for-android/" />
+					</Preference>
+					<Preference 
+        				android:key="about"
+        				android:title="Apache License"
+        				android:summary="Click here to view the Apache License v2.0. This app makes use of code from music-synthesizer-for-android and AndEngine, which were both released under this license. This license is great. Its by far the most allowing open source license I have seen. Whenever possible, my own open-source code is released under this license.">
+            			<intent android:action="wolf.games.mobile.shared.APACHELICENSE"/>           
+    				</Preference>
+    			</PreferenceCategory>
+    			<PreferenceCategory
+                	android:title="text-edit">
+                	<Preference 
+                		android:title="paulmach/Text-Edit-for-Android" 
+                		android:summary="This is the text editor (stripped down, and with a couple different default settings) that opens when you finish editing a tab. Since this is released under the GPL, I am required to provide the code. If you want it, feel free to send me an email!">
+    					<intent android:action="android.intent.action.VIEW"
+            			android:data="https://github.com/paulmach/Text-Edit-for-Android" />
+					</Preference>
+					<Preference 
+        				android:key="about2"
+        				android:title="GNU GPL v3"
+        				android:summary="click here to view the GNU GPL v3. This app includes a text editor (paulmach/Text-Edit-for-Android), with modifications, which was released under this license. send an email to WolfGameMobile@gmail.com if you would like a copy of my version of the code">
+            			<intent android:action="wolf.games.mobile.shared.GNULICENSE"/>
+    				</Preference>
+    			</PreferenceCategory>
+        </PreferenceScreen>
+        </PreferenceCategory>
+</PreferenceScreen>
