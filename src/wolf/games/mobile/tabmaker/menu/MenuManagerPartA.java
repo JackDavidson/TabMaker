@@ -99,31 +99,6 @@ public class MenuManagerPartA {
 		});
 	}
 
-	public void notifyOfOtherInstalledVersion(final MainMenu mCallingActivity) {
-		mSpriteManager.getContext().runOnUiThread(new Runnable() {
-			@Override
-			public void run() {
-				final AlertDialog.Builder alert = new AlertDialog.Builder(mSpriteManager.getContext());
-				alert.setTitle("Free version is still installed");
-				alert.setMessage("\nThe free version of this app is installed on your device. For this version to function properly, it must be uninstalled. Would you like to uninstall it now?\n\n");
-				alert.setNegativeButton("Yes", new DialogInterface.OnClickListener() {
-					public void onClick(DialogInterface dialog, int whichButton) {
-						Uri packageUri = Uri.parse("package:wolf.games.mobile.tabmaker");
-						Intent uninstallIntent = new Intent(Intent.ACTION_DELETE, packageUri);
-						mCallingActivity.startActivity(uninstallIntent);
-						dialog.dismiss();
-					}
-				});
-				alert.setPositiveButton("Not now", new DialogInterface.OnClickListener() {
-					public void onClick(DialogInterface dialog, int whichButton) {
-						dialog.dismiss();
-					}
-				});
-				alert.show();
-
-			}
-		});
-	}
 
 	public void askUserToBuyApp(final MainMenu mCallingActivity) {
 		mSpriteManager.getContext().runOnUiThread(new Runnable() {

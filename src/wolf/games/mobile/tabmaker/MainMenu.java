@@ -442,23 +442,12 @@ public class MainMenu extends SimpleBaseGameActivity implements IOnSceneTouchLis
 				SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
 				if (prefs.getBoolean("OfferTutorial", true))
 					mMenuManager.offerTutorial(this);
-
-				if (SharedData.isFullVersion && isPackageInstalled("wolf.games.mobile.tabmaker", this)) {
-					mMenuManager.notifyOfOtherInstalledVersion(this);
-				} else if ((!SharedData.isFullVersion) && (isPackageInstalled("wolf.games.mobile.tabmakerB", this))) {
-					mMenuManager.notifyOfOtherInstalledVersion(this);
-				}
 			}
 			Log.i("num times opened: ", numTimesAppOpened + " " + numTimesAppOpened % 15);
 		} else {
 			mMenuManager.offerTutorial(this);
 			attemptToLoadAudio();
 			
-			if (SharedData.isFullVersion && isPackageInstalled("wolf.games.mobile.tabmaker", this)) {
-				mMenuManager.notifyOfOtherInstalledVersion(this);
-			} else if ((!SharedData.isFullVersion) && (isPackageInstalled("wolf.games.mobile.tabmakerB", this))) {
-				mMenuManager.notifyOfOtherInstalledVersion(this);
-			}
 		}
 		// re write the info file, or create a new one if it does not exist.
 
