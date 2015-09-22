@@ -3,12 +3,13 @@ package wolf.games.mobile.tabmaker.editor.util;
 public class FingerFollower {
 	double startX;
 	double startY;
-	double minDist = 30;
+	double minDist;
 	boolean traveledDist = false;
 
-	public FingerFollower(double x, double y) {
+	public FingerFollower(double x, double y, double minDist) {
 		this.startX = x;
 		this.startY = y;
+		this.minDist = minDist;
 	}
 
 	public double getDistanceChange(double x, double y) {

@@ -737,7 +737,7 @@ public class TabEditorActivityWithButtons extends TabEditorActivity {
 					case EDITOR:
 						moveSelectorOffScreen();
 						moveUpDownLeftRightOffScreen();
-						mMenuManager.makeToast("Tap where you want to insert something, then hold Insert.",
+						mMenuManager.makeToast("Tap where you want to insert something, then hold Insert. (disable in settings)",
 								getContext());
 						bigMove.setPosition(bigMove.getPositionX(), height + 500);
 						setCA(EditorActions.INSERT);
@@ -1542,7 +1542,7 @@ public class TabEditorActivityWithButtons extends TabEditorActivity {
 	}
 
 	FingerFollower selectorFF;
-	private static final double X_DIST_FOR_CANCEL = 80;
+	private static final double X_DIST_FOR_CANCEL_DENOMINATOR = 14;
 
 	private double distanceToSelector(double Xpos) {
 		float rectangleXOffset = mRectangle.getWidth() / 2;
@@ -1567,9 +1567,9 @@ public class TabEditorActivityWithButtons extends TabEditorActivity {
 					updateColors();
 					Log.i("", "finger down");
 
-					selectorFF = new FingerFollower(curX, curY);
+					selectorFF = new FingerFollower(curX, curY, width/30);
 				} else {
-					onCharacterSelected(pSceneTouchEvent, distanceToSelector(curX) > X_DIST_FOR_CANCEL);
+					onCharacterSelected(pSceneTouchEvent, distanceToSelector(curX) > width/X_DIST_FOR_CANCEL_DENOMINATOR);
 					Log.i("", "finger moved and down agin");
 				}
 				return true;
