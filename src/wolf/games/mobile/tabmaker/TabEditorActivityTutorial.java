@@ -246,7 +246,7 @@ public class TabEditorActivityTutorial extends TabEditorActivityWithButtons {
 	protected void expandDots() {
 		super.expandDots();
 		if (currentStage == TutorialStage.HIT_DOTS) {
-			tutorialText.setText("OK! now, hit '...'->'Save', then 'continue' or 'cancel'");
+			tutorialText.setText("OK! now, hit 'Save', then 'continue' or 'cancel'");
 			this.currentStage = TutorialStage.SAVE;
 		}
 	}
