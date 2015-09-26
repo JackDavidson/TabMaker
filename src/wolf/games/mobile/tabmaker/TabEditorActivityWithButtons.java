@@ -11,14 +11,12 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.Build;
 import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.print.PrintAttributes;
 import android.print.PrintDocumentAdapter;
 import android.print.PrintJob;
 import android.print.PrintManager;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -368,7 +366,7 @@ public class TabEditorActivityWithButtons extends TabEditorActivity {
 				try {
 					prefResult = Integer.valueOf(regOffsetString);
 				} catch (Exception e) {
-					Log.e("stuff", e.toString());
+					//Log.e("stuff", e.toString());
 					prefResult = 0;
 				}
 
@@ -1078,7 +1076,7 @@ public class TabEditorActivityWithButtons extends TabEditorActivity {
 
 					@Override
 					public void onPageFinished(WebView view, String url) {
-						Log.i("TM tabEditorActWBtns", "page finished loading " + url);
+						//Log.i("TM tabEditorActWBtns", "page finished loading " + url);
 						createWebPrintJob(view);
 						mWebView = null;
 					}
@@ -1425,7 +1423,7 @@ public class TabEditorActivityWithButtons extends TabEditorActivity {
 							else {
 								return;
 							}
-							Log.e("moving slow", "value of keepmoving: " + keepMoving);
+							//Log.e("moving slow", "value of keepmoving: " + keepMoving);
 
 							for (int i = 0; i < numStrings; i++) {
 								Text textToMove = stringsMap.get(i);
@@ -1479,7 +1477,7 @@ public class TabEditorActivityWithButtons extends TabEditorActivity {
 				/* has the pinch shrunk by at least 150? */
 				if ((initialDistanceBetweenFingers - distBetweenFingers) > 200) {
 					/* Its a pinch zoom! its time to display the thing to select where to do to */
-					Log.i("EditorWButtons", "its a pinch zoom!");
+					//Log.i("EditorWButtons", "its a pinch zoom!");
 					moveAllButtonsOffScreen();
 					tabPositionBeforeZoomOut = stringsMap.get(0).getX();
 					for (int i = 0; i < numStrings; i++) {
@@ -1494,8 +1492,8 @@ public class TabEditorActivityWithButtons extends TabEditorActivity {
 					zoomedoutTab.setText(entireTabExported);
 					mMenuManager.makeToast("Tap a spot to edit that position. (disable help in settings)", this);
 				}
-				Log.i("EditorWButtons",
-						"distance change between fingers is: " + (initialDistanceBetweenFingers - distBetweenFingers));
+				//Log.i("EditorWButtons",
+						//"distance change between fingers is: " + (initialDistanceBetweenFingers - distBetweenFingers));
 
 				/* reset the multiTouchEvent stuff */
 				multitouchEvent = false;
@@ -1556,8 +1554,8 @@ public class TabEditorActivityWithButtons extends TabEditorActivity {
 		switch (getCA()) {
 		case EDITOR:
 			checkForPinchMotions(pSceneTouchEvent);
-			double curX = pSceneTouchEvent.getX() * pxToNativeRatio;
-			double curY = pSceneTouchEvent.getY() * pxToNativeRatio;
+			double curX = pSceneTouchEvent.getX();
+			double curY = pSceneTouchEvent.getY();
 
 			if (pSceneTouchEvent.isActionDown()) {
 				if (!selectorOpen) {
@@ -1565,26 +1563,24 @@ public class TabEditorActivityWithButtons extends TabEditorActivity {
 					moveSelectorOnScreen();
 					moveUpDownLeftRightOnScreen();
 					updateColors();
-					Log.i("", "finger down");
 
 					selectorFF = new FingerFollower(curX, curY, width/30);
 				} else {
 					onCharacterSelected(pSceneTouchEvent, distanceToSelector(curX) > width/X_DIST_FOR_CANCEL_DENOMINATOR);
-					Log.i("", "finger moved and down agin");
 				}
 				return true;
 			} else if (pSceneTouchEvent.isActionMove()) {
 				if (selectorOpen) {
-					Log.i("", "finger move");
+					//Log.e("", "finger move");
 					if (selectorFF.hastraveledMinDist(curX, curY)) {
-						Log.i("", "finger min dist");
+						//Log.e("", "finger min dist");
 					}
 				}
 			} else if (pSceneTouchEvent.isActionUp()) {
 				if (selectorOpen) {
-					Log.i("", "finger up");
+					//Log.e("", "finger up");
 					if (selectorFF.hastraveledMinDist(curX, curY)) {
-						Log.i("", "finger min dist, finger up.");
+						//Log.e("", "finger min dist, finger up.");
 						onCharacterSelected(pSceneTouchEvent, false);
 					}
 				}
@@ -1683,7 +1679,7 @@ public class TabEditorActivityWithButtons extends TabEditorActivity {
 					mMenuManager.makeToast("performing move.", getContext());
 					float xMovement = pSceneTouchEvent.getX() - lastDownX;
 					float yMovement = lastDownY - pSceneTouchEvent.getY();
-					Log.i("tab maker", xMovement + " " + yMovement);
+					//Log.i("tab maker", xMovement + " " + yMovement);
 					mTabObject.moveLastItem(xMovement, yMovement);
 					updateStrings();
 					// minimizeDots();
@@ -1698,7 +1694,7 @@ public class TabEditorActivityWithButtons extends TabEditorActivity {
 			if (moveTabResult > 0) {
 				/* positive result indicates we need to return to the tab editor at that position */
 				/* then we need to continue editing the tab */
-				Log.i("TM TabEditorWBtn", "Returning to edit tab at position: " + moveTabResult);
+				//Log.i("TM TabEditorWBtn", "Returning to edit tab at position: " + moveTabResult);
 				for (int i = 0; i < numStrings; i++) {
 					Text textToMove = stringsMap.get(i);
 					textToMove.setPosition(-(pxLetterWidth * (moveTabResult - 14)), textToMove.getY() - height);

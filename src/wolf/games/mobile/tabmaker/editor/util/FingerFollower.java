@@ -15,6 +15,8 @@ public class FingerFollower {
 	public double getDistanceChange(double x, double y) {
 		double xDist = startX - x;
 		double yDist = startY - y;
+		//Log.e("", "Start x: " + startX);
+		//Log.e("", "Cur x: " + x);
 		return Math.sqrt(xDist * xDist + yDist * yDist);
 	}
 
@@ -26,6 +28,7 @@ public class FingerFollower {
 		if (traveledDist)
 			return true;
 		traveledDist = getDistanceChange(x,y) > minDist;
+		//Log.e("", "finger dist: " + getDistanceChange(x,y));
 		return traveledDist;
 	}
 
